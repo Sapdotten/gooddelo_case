@@ -7,13 +7,13 @@ router = APIRouter(
 
 
 @router.post("/register")
-def register_user():
+async def register_user():
    pass
 
 @router.post("/login")
-def login_user():
+async def login_user():
    pass
 
 @router.post("/logout")
-def logout_user():
+async def logout_user():
    pass
