@@ -1,9 +1,10 @@
 import logging
 
 from sqlalchemy.ext.asyncio import create_async_engine
-from app.database.db_settings import DBSettings
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.database.db_settings import DBSettings
 
 
 engine = create_async_engine(url=DBSettings.get_url(), max_overflow=10, echo=True)
