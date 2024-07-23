@@ -7,7 +7,7 @@ from app.database.managers import user_manager
 
 router = APIRouter(
     prefix="",
-    tags=["Работа с пользователями"],
+    tags=["JWT токен"],
 )
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
