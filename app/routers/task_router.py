@@ -34,7 +34,7 @@ async def create_task(
 
 @router.get("/", response_model=task_models.GetAllTasksSuccesResponse)
 @limiter.limit("100/minute")
-async def get_all_tasks(request: Request, token: str = Depends(oauth2_scheme)):
+async def get_all_tasks_of_user(request: Request, token: str = Depends(oauth2_scheme)):
     payload = TokenManager.decode_token(token)
     if not payload:
         raise HTTPException(status_code=401, detail="Invalid access token")
@@ -70,7 +70,7 @@ async def get_task(task_id: int, request: Request, token: str = Depends(oauth2_s
 
 @router.put("/{task_id}", response_model=task_models.EditTaskSuccessResponse)
 @limiter.limit("100/minute")
-async def edit_note(
+async def edit_task(
     task_id: int,
     request: Request,
     task_data: task_models.EditTaskRequest,
@@ -98,7 +98,7 @@ async def edit_note(
 
 @router.delete("/{task_id}", response_model=task_models.DeleteTaskSuccessResponse)
 @limiter.limit("100/minute")
-async def delete_note(
+async def delete_task(
     task_id: int, request: Request, token: str = Depends(oauth2_scheme)
 ):
     payload = TokenManager.decode_token(token)

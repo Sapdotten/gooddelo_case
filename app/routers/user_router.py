@@ -51,7 +51,7 @@ async def logout_user(request: Request, token: str = Depends(oauth2_scheme)):
       if is_logout:
          return user_models.LogoutSuccessResponse(status="success", message = "User logout succesfully")
       else:
-         raise HTTPException(status_code=401, detail="Invalid refresh token (maybe you are logout alreaady)")
+         raise HTTPException(status_code=401, detail="Invalid refresh token (maybe you are logout already)")
    else:
       raise HTTPException(status_code=401, detail="Invalid access token")
    
