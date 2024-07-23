@@ -16,7 +16,7 @@
 
 ```bash
 git clone https://github.com/Sapdotten/gooddelo_case.git
-cd <..>/gooddelo_case
+cd ./gooddelo_case
 ```
 ## Настройте переменные окружения перед запуском
 
