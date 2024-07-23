@@ -29,7 +29,7 @@ cd ./gooddelo_case
 * `SQL_DATABASE_NAME` - имя базы данных PostgreSQL
 * `REDIS_HOST` - хост базы данных Redis
 
-Дополнительно, но не обязательно можно указать:
+Дополнительно, но не обязательно, можно указать:
 * `REDIS_USER` - имя пользователя базы данных Redis
 * `REDIS_PASSWORD` - пароль пользователя базы данных Redis
 * `REDIS_DB` - номер базы данных Redis
@@ -61,7 +61,7 @@ API работает по адресу http://0.0.0.0:5000
 ```bash
 python3 -m venv venv
 source venv/bin/activate  
-# Для Windows используйте `venv\Scripts\activate\bat`
+# Для Windows используйте `venv\Scripts\activate.bat`
 ```
 
 ### 2. Установите зависимости
