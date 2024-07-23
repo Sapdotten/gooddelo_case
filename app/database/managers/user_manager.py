@@ -71,14 +71,14 @@ async def delete_token(refresh_token_id: str) -> bool:
         else:
             return False
                 
-async def check_token(user_id: int, token: str)-> bool:
+async def check_token(user_id: int, token: str)-> Union[int, None]:
     async with async_session() as session:
         tokens = await session.execute(select(Tokens).where(Tokens.user_id==user_id))
         tokens = token.scalarc().all()
         for real_token in tokens:
             if real_token.refresh_token==token:
-                return True
-        return False
+                return real_token.id
+        return None
     
 async def check_user(login: str, password: str) -> Union[int, None]:
     """Checks correct of login and password
