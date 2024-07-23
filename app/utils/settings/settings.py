@@ -1,6 +1,6 @@
 import os
 import json
-import logging
+
 
 class Settings:
     """Class that gets data from environment"""
@@ -15,6 +15,8 @@ class Settings:
     _REDIS_HOST = "REDIS_HOST"
     _REDIS_PORT = "REDIS_PORT"
     _REDIS_DB = "REDIS_DB"
+    _REDIS_USER = "REDIS_USER"
+    _REDIS_PASSWORD = "REDIS_PASSWORD"
 
     @classmethod
     def get_jwt_secret(cls):
@@ -41,12 +43,16 @@ class Settings:
         return os.getenv(cls._REDIS_HOST)
 
     @classmethod
-    def get_redis_port(cls):
-        return os.getenv(cls._REDIS_PORT)
-
-    @classmethod
     def get_redis_db(cls):
         return os.getenv(cls._REDIS_DB)
+
+    @classmethod
+    def get_redis_user(cls):
+        return os.getenv(cls._REDIS_USER)
+
+    @classmethod
+    def get_redis_password(cls):
+        return os.getenv(cls._REDIS_PASSWORD)
 
     @classmethod
     def get_jwt_configs(cls) -> tuple[str, int, int]:
@@ -57,7 +63,7 @@ class Settings:
         """
         with open(cls._CONFIGS_FILE, "r") as fp:
             configs = json.load(fp)
-        configs=configs['JWT']
+        configs = configs["JWT"]
         return (
             configs["ALGORITHM"],
             configs["ACCESS_TOKEN_EXPIRE_MINUTES"],

@@ -25,14 +25,17 @@ class GetAllTasksSuccesResponse(BaseModel):
 
 class GetTaskSuccessResponse(BaseModel):
     task_text: str
-     
+
+
 class EditTaskRequest(BaseModel):
     task_text: str
-    
+
+
 class EditTaskSuccessResponse(BaseModel):
     status: str
     message: str
-    
+
+
 class DeleteTaskSuccessResponse(BaseModel):
     status: str
     message: str
