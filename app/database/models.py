@@ -26,14 +26,14 @@ class Tokens(Base):
                 nullable=False,
                 autoincrement=True, 
                 primary_key=True)
-    jwt_refresh_token = Column(Text, 
+    refresh_token = Column(Text, 
                                unique=True,
                                nullable = False)
     user_id = Column(Integer,
                      ForeignKey("users.id"))
     
-class Notes(Base):
-    __tablename__="notes"
+class Task(Base):
+    __tablename__="tasks"
     __tableargs__={"comment":"Table with notes of users"}
     
     id = Column(Integer, 
@@ -43,5 +43,5 @@ class Notes(Base):
                 nullable=False)
     user_id=Column(Integer,
                    ForeignKey("users.id"))
-    note=Column(Text, 
+    task=Column(Text, 
                 unique=False)

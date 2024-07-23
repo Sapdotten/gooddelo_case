@@ -5,7 +5,7 @@ import logging
 class Settings:
     """Class that gets data from environment"""
 
-    _CONFIGS_FILE = "configs.json"
+    _CONFIGS_FILE = "app/configs.json"
 
     _JWT_SECRET = "JWT_SECRET"
     _SQL_USER = "SQL_USER"
@@ -57,6 +57,7 @@ class Settings:
         """
         with open(cls._CONFIGS_FILE, "r") as fp:
             configs = json.load(fp)
+        configs=configs['JWT']
         return (
             configs["ALGORITHM"],
             configs["ACCESS_TOKEN_EXPIRE_MINUTES"],

@@ -12,21 +12,23 @@ class TokenManager:
         ACCESS_TOKEN_EXPIRE_MINUTES,
         REFRESH_TOKEN_EXPIRE_DAYS,
     ) = Settings.get_jwt_configs()
+    
+    header = { "alg": ALGORITHM, "typ": "JWT"}
 
     @classmethod
-    def create_access_token(cls, data: dict):
-        to_encode = data.copy()
+    def create_access_token(cls, user_id: int, refresh_token_id: int):
+        payload = {"user_id":user_id, "refresh_token_id": refresh_token_id}
         expire = datetime.now(timezone.utc) + timedelta(minutes=cls.ACCESS_TOKEN_EXPIRE_MINUTES)
-        to_encode["exp"] = expire
-        encoded_jwt = jwt.encode(to_encode, cls.__SECRET_KEY, algorithm=cls.ALGORITHM)
+        payload["exp"] = expire
+        encoded_jwt = jwt.encode(payload, cls.__SECRET_KEY, algorithm=cls.ALGORITHM)
         return encoded_jwt
 
     @classmethod
-    def create_refresh_token(cls, data: dict):
-        to_encode = data.copy()
+    def create_refresh_token(cls, user_id: int):
+        payload = {"user_id":user_id}
         expire = datetime.now(timezone.utc) + timedelta(days=cls.REFRESH_TOKEN_EXPIRE_DAYS)
-        to_encode["exp"] = expire
-        encoded_jwt = jwt.encode(to_encode, cls.__SECRET_KEY, algorithm=cls.ALGORITHM)
+        payload["exp"] = expire
+        encoded_jwt = jwt.encode(payload, cls.__SECRET_KEY, algorithm=cls.ALGORITHM)
         return encoded_jwt
 
     @classmethod

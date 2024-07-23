@@ -1,7 +1,7 @@
 import logging
 
 from sqlalchemy.ext.asyncio import create_async_engine
-from database.db_settings import DBSettings
+from app.database.db_settings import DBSettings
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.asyncio import AsyncSession
 
