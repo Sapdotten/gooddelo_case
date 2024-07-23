@@ -61,7 +61,7 @@ async def get_task(task_id: int, request: Request, token: str = Depends(oauth2_s
             return task_models.GetTaskSuccessResponse(task_text=task)
         else:
             raise HTTPException(
-                status_code=401,
+                status_code=404,
                 detail="Task was not found or this is task of another user",
             )
     except Exception as e:
@@ -89,7 +89,7 @@ async def edit_note(
             )
         else:
             raise HTTPException(
-                status_code=401,
+                status_code=404,
                 detail="Task was not found or this is task of another user",
             )
     except Exception as e:
@@ -114,7 +114,7 @@ async def delete_note(
             )
         else:
             raise HTTPException(
-                status_code=401,
+                status_code=404,
                 detail="Task was not found or this is task of another user",
             )
     except Exception as e:
